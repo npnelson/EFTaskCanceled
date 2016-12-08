@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>Make sure you run this as a console app (i.e) not in IIS.</div>
+<br />
+<div>This contrived example launches an async query and immediately cancels it without awaiting it</div>
+<br />
+<div> Examine the log output in the console app after the index page is launched (you might have to scroll up).</div>
+<br />
+<div>  You will see a Task canceled exception logged.</div>
+<br />
+<div>  Is there any way to get rid of that (or log it as a warning instead of an error)?</div>
+<br />
+<div>  I explicitly canceled the query, I don't want it polluting my log with error messages that aren't really errors)</div>
+<br />
+<div>A real world example of this might be an app that launches two queries at once, one that might be a fast path query and another that might typically take longer</div>
+<br />
+<div>Both queries are launched and then awaited with a Task.WhenAny() and then the other query is canceled</div>
